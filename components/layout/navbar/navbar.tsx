@@ -4,17 +4,17 @@ import { Disclosure, Menu, Transition } from "@headlessui/react"
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline"
 import Link from "next/link"
 
-const navigation = [
-	{ name: "About", href: "#", current: true },
-	{ name: "Projects", href: "#", current: false },
-	{ name: "Blog", href: "#", current: false },
-]
+// const navigation = [
+// 	{ name: "About", href: "#", current: true, onClick:() =>{} },
+// 	{ name: "Projects", href: "#", current: false, onClick: () => {} },
+// 	{ name: "Blog", href: "#", current: false, onClick: () => {} },
+// ]
 
 function classNames(...classes: string[]) {
 	return classes.filter(Boolean).join(" ")
 }
 
-export default function Example() {
+export default function Navbar({ navigation }) {
 	return (
 		<Disclosure as='nav' className='bg-gray-800'>
 			{({ open }) => (
@@ -49,8 +49,9 @@ export default function Example() {
 									<div className='flex space-x-4'>
 										{navigation.map((item) => (
 											<a
+												onClick={item.onClick}
 												key={item.name}
-												href={item.href}
+												href={item.href ? item.href : null}
 												className={classNames(
 													item.current
 														? "bg-gray-900 text-white"
@@ -62,7 +63,11 @@ export default function Example() {
 												{item.name}
 											</a>
 										))}
-										<Link passHref={true} href={"#"} aria-current='Contact Me'>
+										<Link
+											passHref={true}
+											href={"mailto:everen.john.work@gmail.com"}
+											aria-current='Contact Me'
+										>
 											<a className='text-skin-highlight hover:bg-skin-button-accent-hover hover:text-white px-3 py-2 rounded-md text-sm font-medium'>
 												Contact Me
 											</a>
@@ -148,34 +153,46 @@ export default function Example() {
 					</div>
 
 					<Disclosure.Panel className='sm:hidden'>
-						<div className='px-2 pt-2 pb-3 space-y-1'>
-							{navigation.map((item) => (
-								<Disclosure.Button
-									key={item.name}
-									as='a'
-									href={item.href}
-									className={classNames(
-										item.current
-											? "bg-gray-900 text-white"
-											: "text-gray-300 hover:bg-gray-700 hover:text-white",
-										"block px-3 py-2 rounded-md text-base font-medium"
-									)}
-									aria-current={item.current ? "page" : undefined}
+						<Transition
+							enter='transition duration-100 ease-out'
+							enterFrom='transform scale-95 opacity-0'
+							enterTo='transform scale-100 opacity-100'
+							leave='transition duration-75 ease-out'
+							leaveFrom='transform scale-100 opacity-100'
+							leaveTo='transform scale-95 opacity-0'
+						>
+							<div className='px-2 pt-2 pb-3 space-y-1'>
+								{navigation.map((item) => (
+									<a
+										onClick={item.onClick}
+										href={item.href ? item.href : null}
+										className={classNames(
+											item.current
+												? "bg-gray-900 text-white"
+												: "text-gray-300 hover:bg-gray-700 hover:text-white",
+											"block px-3 py-2 rounded-md text-base font-medium"
+										)}
+										aria-current={item.current ? "page" : undefined}
+									>
+										<Disclosure.Button>{item.name}</Disclosure.Button>
+									</a>
+								))}
+								<Link
+									passHref={true}
+									href={"mailto:everen.john.work@gmail.com"}
+									aria-current='Contact Me'
 								>
-									{item.name}
-								</Disclosure.Button>
-							))}
-							<Link passHref={true} href={"#"} aria-current='Contact Me'>
-								<Disclosure.Button
-									key={"Contact Me"}
-									as='a'
-									href='#'
-									className='text-skin-highlight hover:bg-skin-button-accent-hover hover:text-white block px-3 py-2 rounded-md text-base font-medium'
-								>
-									Contact Me
-								</Disclosure.Button>
-							</Link>
-						</div>
+									<Disclosure.Button
+										key={"Contact Me"}
+										as='a'
+										href='mailto:everen.john.work@gmail.com'
+										className='text-skin-highlight hover:bg-skin-button-accent-hover hover:text-white block px-3 py-2 rounded-md text-base font-medium'
+									>
+										Contact Me
+									</Disclosure.Button>
+								</Link>
+							</div>
+						</Transition>
 					</Disclosure.Panel>
 				</>
 			)}

@@ -10,7 +10,7 @@ const navigation = [
 	{ name: "Other", href: "#" },
 ]
 
-export default function Hero() {
+export default function Hero({ scrollToProjects }) {
 	return (
 		<div className='relative bg-white overflow-hidden'>
 			<div className='max-w-7xl mx-auto'>
@@ -31,19 +31,21 @@ export default function Hero() {
 								<span className='block xl:inline text-skin-dark-highlight'>
 									John Tan Han Seng
 								</span>{" "}
-								<span className='block text-base text-skin-dark-highlight font-medium xl:inline'>
-									Software Engineer
-								</span>
+								<div>
+									<span className='block text-base text-skin-dark-highlight font-medium xl:inline'>
+										Software Engineer
+									</span>
+								</div>
 							</h1>
 
 							<p className='mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0'>
-								Software Engineer. Solving real life problems and trying new
-								solutions.
+								Software Engineer. Building up both software and people with
+								passion.
 							</p>
 							<div className='mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start'>
 								<div className='rounded-md shadow'>
 									<a
-										href='#'
+										href='mailto:everen.john.work@gmail.com'
 										className='w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-skin-base bg-skin-button-accent hover:bg-skin-button-accent-hover md:py-4 md:text-lg md:px-10'
 									>
 										Contact Me
@@ -51,7 +53,7 @@ export default function Hero() {
 								</div>
 								<div className='mt-3 sm:mt-0 sm:ml-3'>
 									<a
-										href='#'
+										onClick={scrollToProjects}
 										className='w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-skin-inverted bg-skin-button-muted md:py-4 md:text-lg md:px-10'
 									>
 										View my projects
