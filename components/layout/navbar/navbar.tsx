@@ -173,6 +173,7 @@ export default function Navbar({ navigation }: NavbarProps) {
 							<div className='px-2 pt-2 pb-3 space-y-1'>
 								{navigation.map((item) => (
 									<a
+										key={item.name}
 										onClick={item.onClick}
 										href={item.href ? item.href : undefined}
 										className={classNames(
