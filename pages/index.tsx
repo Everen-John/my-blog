@@ -9,6 +9,13 @@ import IconGrid from "@/components/iconGrid/iconGrid"
 import ReactTooltip from "react-tooltip"
 import { useEffect, useState, useRef } from "react"
 
+type anchorProp = {
+	name: string
+	href?: string
+	current: boolean
+	onClick: () => any
+}
+
 const projects = [
 	{
 		name: "PowerBI Prototype Development",
@@ -129,9 +136,14 @@ const Home: NextPage = () => {
 		})
 	}
 
-	const navigation = [
+	const navigation: anchorProp[] = [
 		{ name: "About", href: "#", current: true, onClick: () => {} },
-		{ name: "Projects", current: false, onClick: scrollToProjects },
+		{
+			name: "Projects",
+			href: undefined,
+			current: false,
+			onClick: scrollToProjects,
+		},
 		{ name: "Blog", href: "#", current: false, onClick: () => {} },
 	]
 

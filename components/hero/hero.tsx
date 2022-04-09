@@ -3,14 +3,11 @@ import { Popover, Transition } from "@headlessui/react"
 import { MenuIcon, XIcon } from "@heroicons/react/outline"
 import Image from "next/image"
 
-const navigation = [
-	{ name: "About", href: "#" },
-	{ name: "Posts", href: "#" },
-	{ name: "Contact", href: "#" },
-	{ name: "Other", href: "#" },
-]
+interface Props {
+	scrollToProjects: () => void
+}
 
-export default function Hero({ scrollToProjects }) {
+export default function Hero({ scrollToProjects }: Props) {
 	return (
 		<div className='relative bg-white overflow-hidden'>
 			<div className='max-w-7xl mx-auto'>

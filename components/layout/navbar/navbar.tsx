@@ -14,7 +14,16 @@ function classNames(...classes: string[]) {
 	return classes.filter(Boolean).join(" ")
 }
 
-export default function Navbar({ navigation }) {
+type anchorProp = {
+	name: string
+	href?: string
+	current: boolean
+	onClick: () => any
+}
+interface NavbarProps {
+	navigation: anchorProp[]
+}
+export default function Navbar({ navigation }: NavbarProps) {
 	return (
 		<Disclosure as='nav' className='bg-gray-800'>
 			{({ open }) => (
@@ -51,7 +60,7 @@ export default function Navbar({ navigation }) {
 											<a
 												onClick={item.onClick}
 												key={item.name}
-												href={item.href ? item.href : null}
+												href={item.href ? item.href : undefined}
 												className={classNames(
 													item.current
 														? "bg-gray-900 text-white"
@@ -165,7 +174,7 @@ export default function Navbar({ navigation }) {
 								{navigation.map((item) => (
 									<a
 										onClick={item.onClick}
-										href={item.href ? item.href : null}
+										href={item.href ? item.href : undefined}
 										className={classNames(
 											item.current
 												? "bg-gray-900 text-white"
