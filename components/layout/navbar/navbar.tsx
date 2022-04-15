@@ -65,7 +65,7 @@ export default function Navbar({ navigation }: NavbarProps) {
 													item.current
 														? "bg-gray-900 text-white"
 														: "text-gray-300 hover:bg-gray-700 hover:text-white",
-													"px-3 py-2 rounded-md text-sm font-medium"
+													"px-3 py-2 rounded-md text-sm font-medium cursor-pointer"
 												)}
 												aria-current={item.current ? "page" : undefined}
 											>
@@ -170,7 +170,7 @@ export default function Navbar({ navigation }: NavbarProps) {
 							leaveFrom='transform scale-100 opacity-100'
 							leaveTo='transform scale-95 opacity-0'
 						>
-							<div className='px-2 pt-2 pb-3 space-y-1'>
+							<div className='px-2 pt-2 pb-3 space-y-1 '>
 								{navigation.map((item) => (
 									<a
 										key={item.name}

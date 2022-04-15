@@ -19,7 +19,7 @@ export default function GridList({ logos }: any) {
 				>
 					<div className='flex-1 flex flex-col'>
 						<img
-							className='w-12 h-auto max-h-20 flex-shrink-0 mx-auto  transition-transform hover:scale-150'
+							className='aspect-squares h-14 flex-shrink-0 mx-auto  transition-transform hover:scale-150'
 							src={logoItem.imageUrl}
 							alt={logoItem.name}
 							data-tip={logoItem.name}
